@@ -17,6 +17,11 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
     - [7-Tabla Hash](#7-tabla-hash)
     - [8- Linked List](#8--linked-list)
     - [8-Doubly Linked List](#8-doubly-linked-list)
+    - [9-Binary Search Tree](#9-binary-search-tree)
+      - [9.1-Add a new element to a Binary Search Tree](#91-add-a-new-element-to-a-binary-search-tree)
+      - [9.2-Find the Minimum and Maximum Value in a Binary Search Tree](#92-find-the-minimum-and-maximum-value-in-a-binary-search-tree)
+      - [9.3-Check if an Element is Present in a Binary Search Tree](#93-check-if-an-element-is-present-in-a-binary-search-tree)
+      - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
 
 ## Lista de Data Structures
 
@@ -578,4 +583,177 @@ var DoublyLinkedList = function () {
   };
   // Only change code above this line
 };
+```
+
+### 9-Binary Search Tree
+
+#### 9.1-Add a new element to a Binary Search Tree
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+  // Only change code below this line
+  this.add = function (value) {
+    if (this.root === null) {
+      this.root = new Node(value);
+      return;
+    } else {
+      let currentNode = this.root;
+      while (currentNode) {
+        if (value < currentNode.value) {
+          if (!currentNode.left) {
+            currentNode.left = new Node(value);
+            return;
+          } else {
+            currentNode = currentNode.left;
+          }
+        }
+        if (value > currentNode.value) {
+          if (!currentNode.right) {
+            currentNode.right = new Node(value);
+            return;
+          } else {
+            currentNode = currentNode.right;
+          }
+        }
+        if (value === currentNode.value) {
+          return null;
+        }
+      }
+    }
+  };
+  // Only change code above this line
+}
+```
+
+#### 9.2-Find the Minimum and Maximum Value in a Binary Search Tree
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+  // Only change code below this line
+
+  this.findMin = function () {
+    if (this.root === null) return null;
+    let currentNode = this.root;
+    let minValue = currentNode.value;
+    while (currentNode.left) {
+      minValue = currentNode.left.value;
+      currentNode = currentNode.left;
+    }
+    return minValue;
+  };
+
+  this.findMax = function () {
+    if (this.root === null) return null;
+    let currentNode = this.root;
+    let maxValue = currentNode.value;
+    while (currentNode.right) {
+      maxValue = currentNode.right.value;
+      currentNode = currentNode.right;
+    }
+    return maxValue;
+  };
+
+  // Only change code above this line
+}
+```
+
+#### 9.3-Check if an Element is Present in a Binary Search Tree
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+  // Only change code below this line
+  this.isPresent = function (number) {
+    if (this.root === null) {
+      return false;
+    }
+    let currentNode = this.root;
+    while (currentNode !== null) {
+      if (currentNode.value === number) {
+        return true;
+      } else if (number < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (number > currentNode.value) {
+        currentNode = currentNode.right;
+      }
+    }
+
+    return false;
+  };
+  // Only change code above this line
+}
+```
+
+#### 9.4-Check if Tree is Binary Search Tree
+
+Creo algoritmo en base a lo señalado en el enunciado:
+
+> The main distinction of a binary search tree is that the nodes are ordered in an organized > fashion. Nodes have at most 2 child nodes (placed to the right and/or left) based on if the > child node's value is greater than or equal to (right) or less than (left) the parent node.
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+}
+
+function isBinarySearchTree(tree) {
+  // Only change code below this line
+
+  if (tree.root === null) return false;
+  if (tree.root instanceof Node) {
+    if (tree.root.left instanceof Node && tree.root.right === null) {
+      if (tree.root.left.value >= tree.root.value) {
+        return false;
+      } else {
+        return isBinarySearchTree({ root: tree.root.left });
+      }
+    }
+    if (tree.root.left === null && tree.root.right instanceof Node) {
+      if (tree.root.right.value < tree.root.value) {
+        return false;
+      } else {
+        return isBinarySearchTree({ root: tree.root.right });
+      }
+    }
+    if (tree.root.left instanceof Node && tree.root.right instanceof Node) {
+      if (
+        tree.root.left.value >= tree.root.value ||
+        tree.root.right.value <= tree.root.value
+      ) {
+        return false;
+      } else {
+        return (
+          isBinarySearchTree({ root: tree.root.left }) &&
+          isBinarySearchTree({ root: tree.root.right })
+        );
+      }
+    }
+
+    return true;
+  } else {
+    return false;
+  }
+  // Only change code above this line
+}
 ```

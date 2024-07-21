@@ -37,8 +37,6 @@ function BinarySearchTree() {
     }
   };
   // Only change code above this line
-
-  this.showTree = displayTree;
 }
 
 const tree = new BinarySearchTree();
