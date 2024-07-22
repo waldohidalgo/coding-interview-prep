@@ -7,6 +7,11 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
 
 - [Coding Interview Prep](#coding-interview-prep)
   - [Tabla de Contenidos](#tabla-de-contenidos)
+  - [Lista de Algorithms](#lista-de-algorithms)
+    - [1-Find the Symmetric Difference](#1-find-the-symmetric-difference)
+    - [2-Inventory Update](#2-inventory-update)
+    - [3-No Repeats Please](#3-no-repeats-please)
+    - [4-Pairwise](#4-pairwise)
   - [Lista de Data Structures](#lista-de-data-structures)
     - [1-Stack](#1-stack)
     - [2-Queue](#2-queue)
@@ -23,6 +28,120 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.3-Check if an Element is Present in a Binary Search Tree](#93-check-if-an-element-is-present-in-a-binary-search-tree)
       - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
       - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
+
+## Lista de Algorithms
+
+### 1-Find the Symmetric Difference
+
+```js
+function sym(...args) {
+  const sets = args.map((set) => new Set(set));
+
+  const setSym = sets.reduce((set, set2) => {
+    let diff = new Set();
+
+    for (let item of set) {
+      if (!set2.has(item)) {
+        diff.add(item);
+      }
+    }
+    for (let item of set2) {
+      if (!set.has(item) && !diff.has(item)) {
+        diff.add(item);
+      }
+    }
+
+    return diff;
+  });
+  return [...setSym].sort((a, b) => a - b);
+}
+```
+
+### 2-Inventory Update
+
+```js
+function updateInventory(curInv, newInv) {
+  return curInv
+    .concat(newInv)
+    .reduce((acc, arrItem) => {
+      const [qty, item] = arrItem;
+      const itemIndex = acc.findIndex((arrItem) => arrItem[1] === item);
+      if (itemIndex > -1) {
+        acc[itemIndex][0] += qty;
+      } else {
+        acc.push(arrItem);
+      }
+
+      return acc;
+    }, [])
+    .sort((a, b) => a[1].localeCompare(b[1]));
+}
+```
+
+### 3-No Repeats Please
+
+```js
+function permAlone(str) {
+  function noRepeatPlease(str) {
+    if (str.length === 1) {
+      return str;
+    }
+
+    if (str.length === 2) {
+      if (str[0] === str[1]) {
+        return [""];
+      }
+      return [`${str[0]}${str[1]}`, `${str[1]}${str[0]}`];
+    }
+    let arrayFinal = [];
+
+    for (let i = 0; i < str.length; i++) {
+      const newStr = str.slice(0, i) + str.slice(i + 1);
+      const array = noRepeatPlease(newStr);
+
+      const newArray = [];
+
+      for (let j = 0; j < array.length; j++) {
+        if (str[i] !== array[j][0] && array[j] !== "") {
+          newArray.push(str[i] + array[j]);
+        }
+      }
+
+      arrayFinal = arrayFinal.concat(newArray);
+    }
+
+    return arrayFinal;
+  }
+
+  return noRepeatPlease(str).length;
+}
+```
+
+### 4-Pairwise
+
+```js
+function pairwise(arr, arg) {
+  const newArr = arr.map((e, i) => ({ [i]: e }));
+  const pares = [];
+  const indicesYaConsiderados = [];
+  for (let i = 0; i < newArr.length; i++) {
+    for (let j = i + 1; j < newArr.length; j++) {
+      if (
+        !indicesYaConsiderados.includes(j) &&
+        !indicesYaConsiderados.includes(i)
+      ) {
+        if (newArr[i][i] + newArr[j][j] === arg) {
+          pares.push([Object.keys(newArr[i])[0], Object.keys(newArr[j])[0]]);
+          indicesYaConsiderados.push(j);
+          indicesYaConsiderados.push(i);
+        }
+      }
+    }
+  }
+
+  return pares.reduce((acc, elem) => acc + +elem[0] + +elem[1], 0);
+}
+```
 
 ## Lista de Data Structures
 
