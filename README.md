@@ -7,16 +7,19 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
 
 - [Coding Interview Prep](#coding-interview-prep)
   - [Tabla de Contenidos](#tabla-de-contenidos)
-  - [Lista de Algorithms](#lista-de-algorithms)
-    - [1-Find the Symmetric Difference](#1-find-the-symmetric-difference)
-    - [2-Inventory Update](#2-inventory-update)
-    - [3-No Repeats Please](#3-no-repeats-please)
-    - [4-Pairwise](#4-pairwise)
-    - [5-Implement Bubble Sort](#5-implement-bubble-sort)
-    - [6-Implement Selection Sort](#6-implement-selection-sort)
-    - [7-Implement insertion Sort](#7-implement-insertion-sort)
-    - [8-Implement Quick Sort](#8-implement-quick-sort)
-    - [9-Implement Merge Sort](#9-implement-merge-sort)
+  - [Algorithms](#algorithms)
+    - [100% Completed](#100-completed)
+    - [Lista de Algoritmos](#lista-de-algoritmos)
+      - [1-Find the Symmetric Difference](#1-find-the-symmetric-difference)
+      - [2-Inventory Update](#2-inventory-update)
+      - [3-No Repeats Please](#3-no-repeats-please)
+      - [4-Pairwise](#4-pairwise)
+      - [5-Implement Bubble Sort](#5-implement-bubble-sort)
+      - [6-Implement Selection Sort](#6-implement-selection-sort)
+      - [7-Implement insertion Sort](#7-implement-insertion-sort)
+      - [8-Implement Quick Sort](#8-implement-quick-sort)
+      - [9-Implement Merge Sort](#9-implement-merge-sort)
+      - [10-Implement Binary Search](#10-implement-binary-search)
   - [Lista de Data Structures](#lista-de-data-structures)
     - [1-Stack](#1-stack)
     - [2-Queue](#2-queue)
@@ -34,9 +37,15 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
       - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
 
-## Lista de Algorithms
+## Algorithms
 
-### 1-Find the Symmetric Difference
+### 100% Completed
+
+![100% Completed Screenshot](./Algorithms/completed.webp)
+
+### Lista de Algoritmos
+
+#### 1-Find the Symmetric Difference
 
 ```js
 function sym(...args) {
@@ -62,7 +71,7 @@ function sym(...args) {
 }
 ```
 
-### 2-Inventory Update
+#### 2-Inventory Update
 
 ```js
 function updateInventory(curInv, newInv) {
@@ -83,7 +92,7 @@ function updateInventory(curInv, newInv) {
 }
 ```
 
-### 3-No Repeats Please
+#### 3-No Repeats Please
 
 ```js
 function permAlone(str) {
@@ -122,7 +131,7 @@ function permAlone(str) {
 }
 ```
 
-### 4-Pairwise
+#### 4-Pairwise
 
 ```js
 function pairwise(arr, arg) {
@@ -148,7 +157,7 @@ function pairwise(arr, arg) {
 }
 ```
 
-### 5-Implement Bubble Sort
+#### 5-Implement Bubble Sort
 
 ```js
 function bubbleSort(array) {
@@ -173,7 +182,7 @@ function bubbleSort(array) {
 }
 ```
 
-### 6-Implement Selection Sort
+#### 6-Implement Selection Sort
 
 ```js
 function selectionSort(array) {
@@ -196,7 +205,7 @@ function selectionSort(array) {
 }
 ```
 
-### 7-Implement insertion Sort
+#### 7-Implement insertion Sort
 
 ```js
 function insertionSort(array) {
@@ -216,7 +225,7 @@ function insertionSort(array) {
 }
 ```
 
-### 8-Implement Quick Sort
+#### 8-Implement Quick Sort
 
 ```js
 function quickSort(array) {
@@ -241,7 +250,7 @@ function quickSort(array) {
 }
 ```
 
-### 9-Implement Merge Sort
+#### 9-Implement Merge Sort
 
 ```js
 function mergeSort(array) {
@@ -286,6 +295,34 @@ function merge(left, right) {
   }
 
   return result;
+}
+```
+
+#### 10-Implement Binary Search
+
+```js
+function binarySearch(searchList, value) {
+  let arrayPath = [];
+
+  const mid = Math.floor((searchList.length - 1) / 2);
+
+  if (searchList[mid] === value) {
+    return [searchList[mid]];
+  }
+  if (searchList.length <= 1) {
+    return [null];
+  }
+  const left = searchList.slice(0, mid);
+  const right = searchList.slice(mid + 1);
+  arrayPath.push(searchList[mid]);
+
+  if (value < searchList[mid]) {
+    arrayPath = arrayPath.concat(binarySearch(left, value));
+  } else if (value > searchList[mid]) {
+    arrayPath = arrayPath.concat(binarySearch(right, value));
+  }
+
+  return arrayPath.includes(value) ? arrayPath : "Value Not Found";
 }
 ```
 
