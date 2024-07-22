@@ -14,6 +14,8 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
     - [4-Pairwise](#4-pairwise)
     - [5-Implement Bubble Sort](#5-implement-bubble-sort)
     - [6-Implement Selection Sort](#6-implement-selection-sort)
+    - [7-Implement insertion Sort](#7-implement-insertion-sort)
+    - [8-Implement Quick Sort](#8-implement-quick-sort)
   - [Lista de Data Structures](#lista-de-data-structures)
     - [1-Stack](#1-stack)
     - [2-Queue](#2-queue)
@@ -189,6 +191,51 @@ function selectionSort(array) {
     }
   }
   return array;
+  // Only change code above this line
+}
+```
+
+### 7-Implement insertion Sort
+
+```js
+function insertionSort(array) {
+  // Only change code below this line
+
+  for (let i = 1; i < array.length; i++) {
+    let j = i;
+    while (j > 0 && array[j] < array[j - 1]) {
+      let temp = array[j];
+      array[j] = array[j - 1];
+      array[j - 1] = temp;
+      j--;
+    }
+  }
+  return array;
+  // Only change code above this line
+}
+```
+
+### 8-Implement Quick Sort
+
+```js
+function quickSort(array) {
+  // Only change code below this line
+  if (array.length <= 1) {
+    return array;
+  }
+  const last = array[array.length - 1];
+  const subArr = array.slice(0, array.length - 1);
+  const left = [];
+  const right = [];
+  for (let i = 0; i < subArr.length; i++) {
+    if (subArr[i] < last) {
+      left.push(subArr[i]);
+    } else {
+      right.push(subArr[i]);
+    }
+  }
+  return [...quickSort(left), last, ...quickSort(right)];
+
   // Only change code above this line
 }
 ```
