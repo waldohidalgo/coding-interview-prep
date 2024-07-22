@@ -13,6 +13,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
     - [3-No Repeats Please](#3-no-repeats-please)
     - [4-Pairwise](#4-pairwise)
     - [5-Implement Bubble Sort](#5-implement-bubble-sort)
+    - [6-Implement Selection Sort](#6-implement-selection-sort)
   - [Lista de Data Structures](#lista-de-data-structures)
     - [1-Stack](#1-stack)
     - [2-Queue](#2-queue)
@@ -162,6 +163,29 @@ function bubbleSort(array) {
       if (i === arr.length - 2) {
         isOrdered = true;
       }
+    }
+  }
+  return array;
+  // Only change code above this line
+}
+```
+
+### 6-Implement Selection Sort
+
+```js
+function selectionSort(array) {
+  // Only change code below this line
+
+  for (let i = 0; i < array.length - 1; i++) {
+    const subArr = array.slice(i);
+    const minValue = Math.min(...subArr);
+    const minIndex = subArr.indexOf(minValue) + i;
+    if (minIndex === i) {
+      continue;
+    } else {
+      let temp = array[i];
+      array[i] = array[minIndex];
+      array[minIndex] = temp;
     }
   }
   return array;
