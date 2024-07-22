@@ -162,17 +162,17 @@ function pairwise(arr, arg) {
 ```js
 function bubbleSort(array) {
   // Only change code below this line
-  let arr = array;
+
+  if (array.length <= 1) return array;
+
   let isOrdered = false;
   while (!isOrdered) {
-    for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        let temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        [array[i], array[i + 1]] = [array[i + 1], array[i]];
         break;
       }
-      if (i === arr.length - 2) {
+      if (i === array.length - 2) {
         isOrdered = true;
       }
     }

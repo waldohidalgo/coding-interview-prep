@@ -1,16 +1,16 @@
 function bubbleSort(array) {
   // Only change code below this line
-  let arr = array;
+
+  if (array.length <= 1) return array;
+
   let isOrdered = false;
   while (!isOrdered) {
-    for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        let temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        [array[i], array[i + 1]] = [array[i + 1], array[i]];
         break;
       }
-      if (i === arr.length - 2) {
+      if (i === array.length - 2) {
         isOrdered = true;
       }
     }
@@ -19,8 +19,4 @@ function bubbleSort(array) {
   // Only change code above this line
 }
 
-console.log(
-  bubbleSort([
-    1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92,
-  ])
-);
+console.log(bubbleSort([1100, 15, -50]));
