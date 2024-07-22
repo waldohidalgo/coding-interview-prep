@@ -22,6 +22,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.2-Find the Minimum and Maximum Value in a Binary Search Tree](#92-find-the-minimum-and-maximum-value-in-a-binary-search-tree)
       - [9.3-Check if an Element is Present in a Binary Search Tree](#93-check-if-an-element-is-present-in-a-binary-search-tree)
       - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
+      - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
 
 ## Lista de Data Structures
 
@@ -754,6 +755,53 @@ function isBinarySearchTree(tree) {
   } else {
     return false;
   }
+  // Only change code above this line
+}
+```
+
+#### 9.5-Find the Minimum and Maximum Height of a Binary Search Tree
+
+Además, en base a la altura máxima y la altura mínima se calcula si el árbol esta balanceado o no. Se dice que esta balanceado cuando la diferencia sea a lo más 1:
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+
+  // Only change code below this line
+
+  this.findMaxHeight = function () {
+    if (this.root === null) return -1;
+    function maxHeight(node) {
+      if (node === null) return 0;
+      if (node.left === null && node.right === null) return 0;
+      return Math.max(maxHeight(node.left), maxHeight(node.right)) + 1;
+    }
+    return maxHeight(this.root);
+  };
+
+  this.findMinHeight = function () {
+    if (this.root === null) return -1;
+    function minHeight(node) {
+      if (node.left === null && node.right === null) return 0;
+      if (node.left === null && node.right) return 0;
+      if (node.right === null && node.left) return 0;
+      return Math.min(minHeight(node.left), minHeight(node.right)) + 1;
+    }
+    return minHeight(this.root);
+  };
+
+  this.isBalanced = function () {
+    const maxHeight = this.findMaxHeight();
+    const minHeight = this.findMinHeight();
+
+    return maxHeight - minHeight <= 1;
+  };
+
   // Only change code above this line
 }
 ```
