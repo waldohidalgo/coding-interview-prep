@@ -182,6 +182,21 @@ function bubbleSort(array) {
 }
 ```
 
+Sabiendo que en cada recorrido se posiciona el mayor valor al final del array entonces se disminuye el final en cada recorrido lo que permite realizar la siguiente implementación alternativa:
+
+```js
+function bubbleSort2(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    for (let j = 0; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
+}
+```
+
 #### 6-Implement Selection Sort
 
 ```js
@@ -212,9 +227,7 @@ function insertionSort(array) {
   for (let i = 1; i < array.length; i++) {
     let j = i;
     while (j > 0 && array[j] < array[j - 1]) {
-      let temp = array[j];
-      array[j] = array[j - 1];
-      array[j - 1] = temp;
+      [array[j], array[j - 1]] = [array[j - 1], array[j]];
       j--;
     }
   }
