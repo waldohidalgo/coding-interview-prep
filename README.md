@@ -1019,7 +1019,7 @@ function BinarySearchTree() {
 
 Creo algoritmo en base a lo señalado en el enunciado:
 
-> The main distinction of a binary search tree is that the nodes are ordered in an organized > fashion. Nodes have at most 2 child nodes (placed to the right and/or left) based on if the > child node's value is greater than or equal to (right) or less than (left) the parent node.
+> The main distinction of a binary search tree is that the nodes are ordered in an organized fashion. Nodes have at most 2 child nodes (placed to the right and/or left) based on if the child node's value is greater than or equal to (right) or less than (left) the parent node.
 
 ```js
 function Node(value) {
