@@ -195,9 +195,7 @@ function selectionSort(array) {
     if (minIndex === i) {
       continue;
     } else {
-      let temp = array[i];
-      array[i] = array[minIndex];
-      array[minIndex] = temp;
+      [array[i], array[minIndex]] = [array[minIndex], array[i]];
     }
   }
   return array;
