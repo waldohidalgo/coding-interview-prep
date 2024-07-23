@@ -36,6 +36,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.3-Check if an Element is Present in a Binary Search Tree](#93-check-if-an-element-is-present-in-a-binary-search-tree)
       - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
       - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
+      - [9.6-Use Depth First Search in a Binary Search Tree](#96-use-depth-first-search-in-a-binary-search-tree)
 
 ## Algorithms
 
@@ -1113,6 +1114,106 @@ function BinarySearchTree() {
     const minHeight = this.findMinHeight();
 
     return maxHeight - minHeight <= 1;
+  };
+
+  // Only change code above this line
+}
+```
+
+#### 9.6-Use Depth First Search in a Binary Search Tree
+
+Se crean los 3 métodos siguientes: **inorder**, **preorder** y **postorder** tal que:
+
+- In-order: muestra los valores desde el nodo más izquierdo y más abajo hacia la derecha
+- Pre-order: explora las raíces antes que las hojas desde la izquierda hacia la derecha
+- Post-order: explora todas las hojas antes que las raíces desde la izquierda hacia la derecha
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+  // Only change code below this line
+
+  this.inorder = function () {
+    if (this.root === null) return null;
+    const result = [];
+
+    function traverse(node) {
+      if (!node.left && !node.right) {
+        result.push(node.value);
+      }
+      if (node.left && !node.right) {
+        traverse(node.left);
+        result.push(node.value);
+      }
+      if (!node.left && node.right) {
+        result.push(node.value);
+        traverse(node.right);
+      }
+      if (node.left && node.right) {
+        traverse(node.left);
+        result.push(node.value);
+        traverse(node.right);
+      }
+    }
+
+    traverse(this.root);
+    return result;
+  };
+
+  this.preorder = function () {
+    if (this.root === null) return null;
+    const result = [];
+    result.push(this.root.value);
+    function traverse(node) {
+      if (node.left && node.right) {
+        result.push(node.left.value);
+        traverse(node.left);
+        result.push(node.right.value);
+        traverse(node.right);
+      }
+      if (node.left && !node.right) {
+        result.push(node.left.value);
+        traverse(node.left);
+      }
+      if (!node.left && node.right) {
+        result.push(node.right.value);
+        traverse(node.right);
+      }
+    }
+
+    traverse(this.root);
+    return result;
+  };
+
+  this.postorder = function () {
+    if (this.root === null) return null;
+    const result = [];
+    function traverse(node) {
+      if (!node.left && !node.right) {
+        result.push(node.value);
+      }
+      if (node.left && !node.right) {
+        traverse(node.left);
+        result.push(node.value);
+      }
+      if (!node.left && node.right) {
+        traverse(node.right);
+        result.push(node.value);
+      }
+      if (node.left && node.right) {
+        traverse(node.left);
+        traverse(node.right);
+        result.push(node.value);
+      }
+    }
+
+    traverse(this.root);
+    return result;
   };
 
   // Only change code above this line
