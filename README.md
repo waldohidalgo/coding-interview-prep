@@ -40,6 +40,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.7-Use Breadth First Search in a Binary Search Tree](#97-use-breadth-first-search-in-a-binary-search-tree)
       - [9.8-Delete a Leaf Node in a Binary Search Tree](#98-delete-a-leaf-node-in-a-binary-search-tree)
       - [9.9-Delete a Node with One Child in a Binary Search Tree](#99-delete-a-node-with-one-child-in-a-binary-search-tree)
+      - [9.10-Delete a Node with Two Children in a Binary Search Tree](#910-delete-a-node-with-two-children-in-a-binary-search-tree)
 
 ## Algorithms
 
@@ -1274,7 +1275,7 @@ function BinarySearchTree() {
 
 #### 9.8-Delete a Leaf Node in a Binary Search Tree
 
-Implementación de algoritmo que elimina nodos sin hijos:
+Implementación de algoritmo que elimina nodos **sin hijos**:
 
 ```js
 function Node(value) {
@@ -1342,7 +1343,7 @@ function BinarySearchTree() {
 
 #### 9.9-Delete a Node with One Child in a Binary Search Tree
 
-Implementación de algoritmo que elimina nodo con solo un hijo:
+Implementación de algoritmo que elimina nodo con **solo un hijo**:
 
 ```js
 function Node(value) {
@@ -1408,6 +1409,114 @@ function BinarySearchTree() {
         }
       } else {
         this.root = target.left !== null ? target.left : target.right;
+      }
+    }
+  };
+}
+```
+
+#### 9.10-Delete a Node with Two Children in a Binary Search Tree
+
+Implementación de algoritmo que elimina un nodo que posee **dos hijos**. La eliminación y la posterior reconfiguración del árbol binario se realiza en base a lo señalado en el enunciado del problema siguiente:
+
+> Removing nodes that have two children is the hardest case to implement. Removing a node like this produces two subtrees that are no longer connected to the original tree structure. How can we reconnect them? One method is to find the smallest value in the right subtree of the target node and replace the target node with this value. Selecting the replacement in this way ensures that it is greater than every node in the left subtree it becomes the new parent of but also less than every node in the right subtree it becomes the new parent of. Once this replacement is made the replacement node must be removed from the right subtree. Even this operation is tricky because the replacement may be a leaf or it may itself be the parent of a right subtree. If it is a leaf we must remove its parent's reference to it. Otherwise, it must be the right child of the target. In this case, we must replace the target value with the replacement value and make the target reference the replacement's right child.
+
+Es decir, si el nodo a eliminar tiene 2 hijos, entonces en el nodo derecho (subárbol) se busca el nodo con el menor valor. Si ese nodo no tiene hijos, entonces se reemplaza el valor de este nodo en el valor del nodo a eliminar luego dicho nodo(el nodo de menor valor) se elimina y el padre que apuntaba a este nodo hijo ahora apunta a nulo. Ahora bien, si ese nodo (el nodo de menor valor) tiene un hijo, ese hijo **SIEMPRE** estará ubicado a la derecha ya que si estuviera a la izquierda, entonces el nodo que se esta analizando no sería mínimo por lo que existiría una contradicción ya que el nodo es mínimo. Como el nodo tiene un nodo hijo a la derecha, se reemplaza el valor de ese nodo(el nodo de menor valor) en el nodo a eliminar y el puntero del nodo a eliminar derecho ahora apunta al nodo hijo derecho del nodo que posee menor valor.
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+
+function BinarySearchTree() {
+  this.root = null;
+
+  this.remove = function (value) {
+    if (this.root === null) {
+      return null;
+    }
+    var target;
+    var parent = null;
+    // Find the target value and its parent
+    (function findValue(node = this.root) {
+      if (value == node.value) {
+        target = node;
+      } else if (value < node.value && node.left !== null) {
+        parent = node;
+        return findValue(node.left);
+      } else if (value < node.value && node.left === null) {
+        return null;
+      } else if (value > node.value && node.right !== null) {
+        parent = node;
+        return findValue(node.right);
+      } else {
+        return null;
+      }
+    }).bind(this)();
+    if (target === null) {
+      return null;
+    }
+    // Count the children of the target to delete
+    var children =
+      (target.left !== null ? 1 : 0) + (target.right !== null ? 1 : 0);
+    // Case 1: Target has no children
+    if (children === 0) {
+      if (target == this.root) {
+        this.root = null;
+      } else {
+        if (parent.left == target) {
+          parent.left = null;
+        } else {
+          parent.right = null;
+        }
+      }
+    }
+    // Case 2: Target has one child
+    else if (children == 1) {
+      var newChild = target.left !== null ? target.left : target.right;
+      if (parent === null) {
+        target.value = newChild.value;
+        target.left = null;
+        target.right = null;
+      } else if (newChild.value < parent.value) {
+        parent.left = newChild;
+      } else {
+        parent.right = newChild;
+      }
+      target = null;
+    }
+    // Case 3: Target has two children
+    // Only change code below this line
+    else if (children == 2) {
+      let targetMin = null;
+      let targetMinParent = null;
+
+      function findTargetMin(node = target.right, parent = target) {
+        if (node.left === null) {
+          targetMin = node;
+          targetMinParent = parent;
+        } else {
+          return findTargetMin(node.left, node);
+        }
+      }
+
+      findTargetMin();
+
+      target.value = targetMin.value;
+      const childrenTargetMin =
+        (targetMin.left !== null ? 1 : 0) + (targetMin.right !== null ? 1 : 0);
+      if (childrenTargetMin === 0) {
+        if (targetMinParent.left == targetMin) {
+          targetMinParent.left = null;
+        } else {
+          targetMinParent.right = null;
+        }
+      }
+
+      if (childrenTargetMin == 1) {
+        target.right = targetMin.right;
       }
     }
   };
