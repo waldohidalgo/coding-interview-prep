@@ -39,6 +39,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.6-Use Depth First Search in a Binary Search Tree](#96-use-depth-first-search-in-a-binary-search-tree)
       - [9.7-Use Breadth First Search in a Binary Search Tree](#97-use-breadth-first-search-in-a-binary-search-tree)
       - [9.8-Delete a Leaf Node in a Binary Search Tree](#98-delete-a-leaf-node-in-a-binary-search-tree)
+      - [9.9-Delete a Node with One Child in a Binary Search Tree](#99-delete-a-node-with-one-child-in-a-binary-search-tree)
 
 ## Algorithms
 
@@ -1333,6 +1334,80 @@ function BinarySearchTree() {
             parentNode.right = null;
           }
         }
+      }
+    }
+  };
+}
+```
+
+#### 9.9-Delete a Node with One Child in a Binary Search Tree
+
+Implementación de algoritmo que elimina nodo con solo un hijo:
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+
+function BinarySearchTree() {
+  this.root = null;
+
+  this.remove = function (value) {
+    if (this.root === null) {
+      return null;
+    }
+    var target;
+    var parent = null;
+    var direction = null;
+    // Find the target value and its parent
+    (function findValue(node = this.root) {
+      if (value == node.value) {
+        target = node;
+      } else if (value < node.value && node.left !== null) {
+        parent = node;
+        direction = "left";
+        return findValue(node.left);
+      } else if (value < node.value && node.left === null) {
+        return null;
+      } else if (value > node.value && node.right !== null) {
+        parent = node;
+        direction = "right";
+        return findValue(node.right);
+      } else {
+        return null;
+      }
+    }).bind(this)();
+    if (target === null) {
+      return null;
+    }
+    // Count the children of the target to delete
+    var children =
+      (target?.left !== null ? 1 : 0) + (target?.right !== null ? 1 : 0);
+    // Case 1: Target has no children
+    if (children === 0) {
+      if (target == this.root) {
+        this.root = null;
+      } else {
+        if (parent.left == target) {
+          parent.left = null;
+        } else {
+          parent.right = null;
+        }
+      }
+    }
+    // Case 2: Target has one child
+    // Only change code below this line
+    if (children == 1) {
+      if (target !== this.root) {
+        if (direction == "left") {
+          parent.left = target.left !== null ? target.left : target.right;
+        } else {
+          parent.right = target.right !== null ? target.right : target.left;
+        }
+      } else {
+        this.root = target.left !== null ? target.left : target.right;
       }
     }
   };
