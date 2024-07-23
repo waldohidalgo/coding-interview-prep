@@ -41,6 +41,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.8-Delete a Leaf Node in a Binary Search Tree](#98-delete-a-leaf-node-in-a-binary-search-tree)
       - [9.9-Delete a Node with One Child in a Binary Search Tree](#99-delete-a-node-with-one-child-in-a-binary-search-tree)
       - [9.10-Delete a Node with Two Children in a Binary Search Tree](#910-delete-a-node-with-two-children-in-a-binary-search-tree)
+      - [9.11-Invert a Binary Tree](#911-invert-a-binary-tree)
 
 ## Algorithms
 
@@ -1520,5 +1521,52 @@ function BinarySearchTree() {
       }
     }
   };
+}
+```
+
+#### 9.11-Invert a Binary Tree
+
+He creado dos algoritmos diferentes que hacen lo mismo invertir un árbol binario. Un árbol binario invertido se dice que cumple con lo siguiente:
+
+> Here will we create a function to invert a binary tree. Given a binary tree, we want to produce a new tree that is equivalently the mirror image of this tree. Running an inorder traversal on an inverted tree will explore the nodes in reverse order when compared to the inorder traversal of the original tree.
+
+Es decir, en un recorrido **inorder** sobre árbol binario invertido, los nodos son explorados en un orden inverso cuando se compara a un recorrido **inorder** sobre el árbol binario original.
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+
+  // Only change code below this line
+
+  this.invert = function () {
+    if (this.root === null) return null;
+    const queue = [this.root];
+    while (queue.length) {
+      const node = queue.shift();
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+      [node.left, node.right] = [node.right, node.left];
+    }
+    return this;
+  };
+
+  this.invert1 = function () {
+    // otra manera de hacer lo mismo que el método invert
+    if (this.root === null) return null;
+
+    function invert(node) {
+      if (node === null) return null;
+      [node.left, node.right] = [invert(node.right), invert(node.left)];
+      return node;
+    }
+    return invert(this.root);
+  };
+
+  // Only change code above this line
 }
 ```
