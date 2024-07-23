@@ -37,6 +37,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
       - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
       - [9.6-Use Depth First Search in a Binary Search Tree](#96-use-depth-first-search-in-a-binary-search-tree)
+      - [9.7-Use Breadth First Search in a Binary Search Tree](#97-use-breadth-first-search-in-a-binary-search-tree)
 
 ## Algorithms
 
@@ -1214,6 +1215,55 @@ function BinarySearchTree() {
 
     traverse(this.root);
     return result;
+  };
+
+  // Only change code above this line
+}
+```
+
+#### 9.7-Use Breadth First Search in a Binary Search Tree
+
+Algoritmo implementado en base a lo señalado en el enunciado:
+
+> In this method, we start by adding the root node to a queue. Then we begin a loop where we dequeue the first item in the queue, add it to a new array, and then inspect both its child subtrees. If its children are not null, they are each enqueued. This process continues until the queue is empty.
+
+```js
+var displayTree = (tree) => console.log(JSON.stringify(tree, null, 2));
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+function BinarySearchTree() {
+  this.root = null;
+
+  // Only change code below this line
+
+  this.levelOrder = function () {
+    if (this.root === null) return null;
+    const values = [];
+    const queue = [this.root];
+
+    while (queue.length) {
+      const node = queue.shift();
+      values.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return values;
+  };
+
+  this.reverseLevelOrder = function () {
+    if (this.root === null) return null;
+    const values = [];
+    const queue = [this.root];
+    while (queue.length) {
+      const node = queue.shift();
+      values.push(node.value);
+      if (node.right) queue.push(node.right);
+      if (node.left) queue.push(node.left);
+    }
+    return values;
   };
 
   // Only change code above this line
