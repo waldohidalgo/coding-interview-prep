@@ -38,6 +38,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
       - [9.6-Use Depth First Search in a Binary Search Tree](#96-use-depth-first-search-in-a-binary-search-tree)
       - [9.7-Use Breadth First Search in a Binary Search Tree](#97-use-breadth-first-search-in-a-binary-search-tree)
+      - [9.8-Delete a Leaf Node in a Binary Search Tree](#98-delete-a-leaf-node-in-a-binary-search-tree)
 
 ## Algorithms
 
@@ -1267,5 +1268,73 @@ function BinarySearchTree() {
   };
 
   // Only change code above this line
+}
+```
+
+#### 9.8-Delete a Leaf Node in a Binary Search Tree
+
+Implementación de algoritmo que elimina nodos sin hijos:
+
+```js
+function Node(value) {
+  this.value = value;
+  this.left = null;
+  this.right = null;
+}
+
+function BinarySearchTree() {
+  this.root = null;
+
+  // Only change code below this line
+
+  this.remove = function (value) {
+    let nodeToDelete = null;
+    let parentNode = null;
+
+    let currentNode = this.root;
+
+    function findNodeToDelete(node) {
+      if (node === null) return null;
+      if (node.value === value) {
+        nodeToDelete = node;
+      } else if (value < node.value) {
+        parentNode = node;
+        findNodeToDelete(node.left);
+      } else if (value > node.value) {
+        parentNode = node;
+        findNodeToDelete(node.right);
+      }
+    }
+
+    function childrenCount(node) {
+      if (node.left && node.right) {
+        return 2;
+      } else if (node.left || node.right) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+
+    if (this.root === null) return null;
+
+    if (currentNode.value === value) {
+      this.root = null;
+      return null;
+    } else {
+      findNodeToDelete(currentNode);
+      if (!nodeToDelete) {
+        return null;
+      } else {
+        if (childrenCount(nodeToDelete) === 0) {
+          if (parentNode.left === nodeToDelete) {
+            parentNode.left = null;
+          } else if (parentNode.right === nodeToDelete) {
+            parentNode.right = null;
+          }
+        }
+      }
+    }
+  };
 }
 ```
