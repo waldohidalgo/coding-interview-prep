@@ -50,6 +50,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
     - [12-Graphs](#12-graphs)
       - [12.1-Adjacency List](#121-adjacency-list)
       - [12.2-Adjacency Matrix](#122-adjacency-matrix)
+      - [12.3-Incidence Matrix](#123-incidence-matrix)
 
 ## Algorithms
 
@@ -1972,5 +1973,23 @@ var adjMatUndirected = [
   [1, 0, 0, 0, 1],
   [1, 0, 0, 0, 1],
   [0, 0, 1, 1, 0],
+];
+```
+
+#### 12.3-Incidence Matrix
+
+Se pide crear lo siguiente:
+
+> Create an incidence matrix of an undirected graph with five nodes and four edges. This matrix should be in a multi-dimensional array.
+>
+> These five nodes have the following relationships. The first edge is between the first and second node. The second edge is between the second and third node. The third edge is between the third and fifth node. The fourth edge is between the fourth and second node. All edge weights are one and the edge order matters.
+
+```js
+var incMatUndirected = [
+  [1, 0, 0, 0],
+  [1, 1, 0, 1],
+  [0, 1, 1, 0],
+  [0, 0, 0, 1],
+  [0, 0, 1, 0],
 ];
 ```
