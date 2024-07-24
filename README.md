@@ -47,6 +47,8 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [11.1-Insert an Element into a Max Heap](#111-insert-an-element-into-a-max-heap)
       - [11.2-Remove an Element from a Max Heap](#112-remove-an-element-from-a-max-heap)
       - [11.3-Implement Heap Sort with a Min Heap](#113-implement-heap-sort-with-a-min-heap)
+    - [12-Graphs](#12-graphs)
+      - [12.1-Adjacency List](#121-adjacency-list)
 
 ## Algorithms
 
@@ -1906,5 +1908,52 @@ var MinHeap = function () {
     return sorted;
   };
   // Only change code above this line
+};
+```
+
+### 12-Graphs
+
+#### 12.1-Adjacency List
+
+Se define una adjacency list según lo siguiente:
+
+> Graphs can be represented in different ways. Here we describe one way, which is called an adjacency list. An adjacency list is essentially a bulleted list where the left side is the node and the right side lists all the other nodes it's connected to. Below is a representation of an adjacency list.
+
+> Node1: Node2, Node3
+>
+> Node2: Node1
+>
+> Node3: Node1
+
+> Above is an undirected graph because Node1 is connected to Node2 and Node3, and that information is consistent with the connections Node2 and Node3 show. An adjacency list for a directed graph would mean each row of the list shows direction. If the above was directed, then Node2: Node1 would mean there the directed edge is pointing from Node2 towards Node1. We can represent the undirected graph above as an adjacency list by putting it within a JavaScript object.
+
+```js
+var undirectedG = {
+  Node1: ["Node2", "Node3"],
+  Node2: ["Node1"],
+  Node3: ["Node1"],
+};
+```
+
+This can also be more simply represented as an array where the nodes just have numbers rather than string labels.
+
+```js
+var undirectedGArr = [
+  [1, 2], // Node1
+  [0], // Node2
+  [0], // Node3
+];
+```
+
+Se pide crear lo siguiente:
+
+> Create a social network as an undirected graph with 4 nodes/people named James, Jill, Jenny, and Jeff. There are edges/relationships between James and Jeff, Jill and Jenny, and Jeff and Jenny.
+
+```js
+var undirectedAdjList = {
+  James: ["Jeff"],
+  Jill: ["Jenny"],
+  Jeff: ["Jenny", "James"],
+  Jenny: ["Jill", "Jeff"],
 };
 ```
