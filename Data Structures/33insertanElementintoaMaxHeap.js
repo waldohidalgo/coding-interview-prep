@@ -1,8 +1,9 @@
 var MaxHeap = function () {
   // Only change code below this line
-  this.maxheap = [null];
+  this.maxheap = [];
   this.insert = function (element) {
-    if (this.maxheap.length === 1) {
+    if (this.maxheap.length === 0) {
+      this.maxheap.push(null);
       this.maxheap.push(element);
     } else {
       this.maxheap.push(element);
@@ -23,7 +24,6 @@ var MaxHeap = function () {
   };
 
   this.print = function () {
-    console.log(this.maxheap.slice(1));
     return this.maxheap.slice(1);
   };
   // Only change code above this line
