@@ -1645,3 +1645,5 @@ var Trie = function () {
   // Only change code above this line
 };
 ```
+
+Cuando se agrega una palabra, el nodo asociado a la última letra posee la propiedad **end** igual a true. Para mostrar todas las palabras, se recorren todos los nodos y se van uniendo las letras hasta el nodo asociado a la última letra el cual posee la propiedad end como true. Para chequear si una palabra existe, se procede a recorrer cada nodo y si no existe la clave o si al llegar al nodo que posee la última letra, la propiedad end es false entonces la palabra no existe, en caso contrario si existe.
