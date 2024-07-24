@@ -49,6 +49,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [11.3-Implement Heap Sort with a Min Heap](#113-implement-heap-sort-with-a-min-heap)
     - [12-Graphs](#12-graphs)
       - [12.1-Adjacency List](#121-adjacency-list)
+      - [12.2-Adjacency Matrix](#122-adjacency-matrix)
 
 ## Algorithms
 
@@ -1956,4 +1957,20 @@ var undirectedAdjList = {
   Jeff: ["Jenny", "James"],
   Jenny: ["Jill", "Jeff"],
 };
+```
+
+#### 12.2-Adjacency Matrix
+
+Se pide crear lo siguiente:
+
+> Create an adjacency matrix of an undirected graph with five nodes. This matrix should be in a multi-dimensional array. These five nodes have relationships between the first and fourth node, the first and third node, the third and fifth node, and the fourth and fifth node. All edge weights are one.
+
+```js
+var adjMatUndirected = [
+  [0, 0, 1, 1, 0],
+  [0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 1],
+  [1, 0, 0, 0, 1],
+  [0, 0, 1, 1, 0],
+];
 ```
