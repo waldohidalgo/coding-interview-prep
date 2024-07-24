@@ -45,6 +45,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
     - [10-Create a Trie Search Tree](#10-create-a-trie-search-tree)
     - [11-Binary Heap](#11-binary-heap)
       - [11.1-Insert an Element into a Max Heap](#111-insert-an-element-into-a-max-heap)
+      - [11.2-Remove an Element from a Max Heap](#112-remove-an-element-from-a-max-heap)
 
 ## Algorithms
 
@@ -1691,6 +1692,55 @@ Se pide crear un **Max Heap** en base a las siguientes instrucciones:
 > Finally, add a print method which returns an array of all the items that have been added to the heap.
 
 ```js
+var MaxHeap = function () {
+  // Only change code below this line
+  this.maxheap = [];
+  this.insert = function (element) {
+    if (this.maxheap.length === 0) {
+      this.maxheap.push(null);
+      this.maxheap.push(element);
+    } else {
+      this.maxheap.push(element);
+      let index = this.maxheap.length - 1;
+      while (
+        this.maxheap[index] > this.maxheap[Math.floor(index / 2)] &&
+        index > 1
+      ) {
+        [this.maxheap[Math.floor(index / 2)], this.maxheap[index]] = [
+          this.maxheap[index],
+          this.maxheap[Math.floor(index / 2)],
+        ];
+        index = Math.floor(index / 2);
+      }
+    }
+
+    return element;
+  };
+
+  this.print = function () {
+    return this.maxheap.slice(1);
+  };
+  // Only change code above this line
+};
+```
+
+#### 11.2-Remove an Element from a Max Heap
+
+Las instrucciones de implementación del algoritmo de eliminación son las siguientes:
+
+> Now that we can add elements to our heap let's see how we can remove elements. Removing and inserting elements both require similar logic. In a max heap you will usually want to remove the greatest value, so this involves simply extracting it from the root of our tree. This will break the heap property of our tree, so we must reestablish it in some way. Typically, for a max heap this is done in the following way:
+>
+> -Move the last element in the heap into the root position.
+>
+> -If either child of the root is greater than it, swap the root with the child of greater value.
+>
+> -Continue swapping until the parent is greater than both children or you reach the last level in the tree.
+
+Las instrucciones específicas de cómo implementar el algoritmo en el problema son la siguientes:
+
+> Instructions: Add a method to our max heap called remove. This method should return the greatest value that has been added to our max heap and remove it from the heap. It should also reorder the heap so the heap property is maintained. After removing an element, the next greatest element remaining in the heap should become the root.
+
+```js
 const MaxHeap = function () {
   this.heap = [];
   this.parent = (index) => {
@@ -1744,7 +1794,7 @@ const MaxHeap = function () {
           return rightChildIndex;
         }
       }
-      findMaxChildIndex = findMaxChildIndex.bind(this); // uno this ya que utilizo el objeto que llama a remove para obtener la propiedad heap
+      findMaxChildIndex = findMaxChildIndex.bind(this);
 
       const maxChildIndex = findMaxChildIndex(
         leftChildIndex,
