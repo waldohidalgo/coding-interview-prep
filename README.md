@@ -46,6 +46,7 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
     - [11-Binary Heap](#11-binary-heap)
       - [11.1-Insert an Element into a Max Heap](#111-insert-an-element-into-a-max-heap)
       - [11.2-Remove an Element from a Max Heap](#112-remove-an-element-from-a-max-heap)
+      - [11.3-Implement Heap Sort with a Min Heap](#113-implement-heap-sort-with-a-min-heap)
 
 ## Algorithms
 
@@ -1796,11 +1797,7 @@ const MaxHeap = function () {
       }
       findMaxChildIndex = findMaxChildIndex.bind(this);
 
-      const maxChildIndex = findMaxChildIndex(
-        leftChildIndex,
-        rightChildIndex,
-        this.heap
-      );
+      const maxChildIndex = findMaxChildIndex(leftChildIndex, rightChildIndex);
       if (
         maxChildIndex < this.heap.length &&
         this.heap[i] < this.heap[maxChildIndex]
@@ -1815,6 +1812,99 @@ const MaxHeap = function () {
     return maxValue;
   };
 
+  // Only change code above this line
+};
+```
+
+#### 11.3-Implement Heap Sort with a Min Heap
+
+Se implementa un algoritmo heap sort a partir de un min heap. Las instrucciones de cómo crear el algoritmo son las siguientes:
+
+> Now that we can add and remove elements let's see some of the applications heaps can be used for. Heaps are commonly used to implement priority queues because they always store an item of greatest or least value in first position. In addition, they are used to implement a sorting algorithm called heap sort. We'll see how to do this here. Heap sort uses a min heap, the reverse of a max heap. A min heap always stores the element of least value in the root position.
+>
+> Heap sort works by taking an unsorted array, adding each item in the array into a min heap, and then extracting every item out of the min heap into a new array. The min heap structure ensures that the new array will contain the original items in least to greatest order. This is one of the most efficient sorting algorithms with average and worst case performance of O(nlog(n)).
+
+Las instrucciones para implementar la clase MinHeap y sus métodos que permitan realizar el sorting son las siguientes:
+
+> Let's implement heap sort with a min heap. Feel free to adapt your max heap code here. Create an object MinHeap with insert, remove, and sort methods. The sort method should return an array of all the elements in the min heap sorted from smallest to largest.
+
+```js
+var MinHeap = function () {
+  // Only change code below this line
+  this.heap = [];
+  this.insert = function (value) {
+    if (this.heap.length === 0) {
+      this.heap.push(value);
+    } else {
+      this.heap.push(value);
+      let index = this.heap.length - 1;
+      while (
+        this.heap[index] < this.heap[Math.floor((index - 1) / 2)] &&
+        index > 0
+      ) {
+        [this.heap[Math.floor((index - 1) / 2)], this.heap[index]] = [
+          this.heap[index],
+          this.heap[Math.floor((index - 1) / 2)],
+        ];
+        index = Math.floor((index - 1) / 2);
+      }
+    }
+  };
+
+  this.remove = function () {
+    const minValue = this.heap[0];
+    this.heap[0] = this.heap[this.heap.length - 1];
+    this.heap.pop();
+
+    let i = 0;
+
+    while (i < this.heap.length) {
+      let leftChildIndex = 2 * i + 1;
+      let rightChildIndex = 2 * i + 2;
+      let minIndex = i;
+
+      function findMinChildIndex(leftChildIndex, rightChildIndex) {
+        if (leftChildIndex === this.heap.length - 1) {
+          return leftChildIndex;
+        }
+
+        if (leftChildIndex > this.heap.length - 1) {
+          return this.heap.length;
+        }
+
+        if (this.heap[leftChildIndex] < this.heap[rightChildIndex]) {
+          return leftChildIndex;
+        } else {
+          return rightChildIndex;
+        }
+      }
+      findMinChildIndex = findMinChildIndex.bind(this);
+      const minChildIndex = findMinChildIndex(leftChildIndex, rightChildIndex);
+
+      if (
+        minChildIndex < this.heap.length &&
+        this.heap[i] > this.heap[minChildIndex]
+      ) {
+        [this.heap[i], this.heap[minChildIndex]] = [
+          this.heap[minChildIndex],
+          this.heap[i],
+        ];
+        i = minChildIndex;
+      } else {
+        break;
+      }
+    }
+  };
+
+  this.sort = function () {
+    const sorted = [];
+    while (this.heap.length > 0) {
+      sorted.push(this.heap[0]);
+      this.remove();
+    }
+
+    return sorted;
+  };
   // Only change code above this line
 };
 ```

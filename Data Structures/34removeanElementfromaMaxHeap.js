@@ -53,11 +53,7 @@ const MaxHeap = function () {
       }
       findMaxChildIndex = findMaxChildIndex.bind(this);
 
-      const maxChildIndex = findMaxChildIndex(
-        leftChildIndex,
-        rightChildIndex,
-        this.heap
-      );
+      const maxChildIndex = findMaxChildIndex(leftChildIndex, rightChildIndex);
       if (
         maxChildIndex < this.heap.length &&
         this.heap[i] < this.heap[maxChildIndex]
