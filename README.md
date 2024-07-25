@@ -2090,18 +2090,20 @@ function dfs(graph, root) {
 
   while (stack.length) {
     const node = stack.pop();
+    if (nodesRemoved.includes(node)) {
+      continue;
+    }
     nodesRemoved.push(node);
     for (let i = 0; i < graph[node].length; i++) {
       if (graph[node][i] === 1) {
-        graph[i][node] = 0;
+        graph[i][node] = 0; // cuando se ha considerado el nodo i conectado al node ya no es necesario considerarlo en el grafo
         graph[node][i] = 0;
         stack.push(i);
       }
     }
   }
-
   return nodesRemoved;
 }
 ```
 
-Mi algoritmo empieza a recorrer desde el nodo root, se almacena su valor en el array **nodesRemoved** y se buscan los nodos conectados al root (valor 1 en la matriz). Se pushea cada valor al array **stack** y se eliminan de la matriz su simétrico ya que aquello implica que ya se considero dicho nodo. En la siguiente iteración del ciclo while, se saca de la stack el último elemento y se agrega su valor al array **nodesRemoved**, se recorren los nodos conectados a dicho nodo (ahora los nodos considerados en iteraciones previas ya no estan en la matriz) y aquellos en que su valor sea 1 se pushean a la stack y se modifican por 0 los nodos ubicados en la posición simétrica en la matriz. Se realiza todo lo anterior hasta que la matriz queda vacía.
+Mi algoritmo empieza a recorrer desde el nodo root, se almacena su valor en el array **nodesRemoved** solo si no existe (los nodos a los cuales ya se ha llegado no se consideran) y se buscan los nodos conectados al root (valor 1 en la matriz). Se pushea cada valor al array **stack** y se eliminan de la matriz su simétrico ya que aquello implica que ya se considero dicho nodo. En la siguiente iteración del ciclo while, se saca de la stack el último elemento y se agrega su valor al array **nodesRemoved**, se recorren los nodos conectados a dicho nodo (ahora los nodos considerados en iteraciones previas ya no estan en la matriz) y aquellos en que su valor sea 1 se pushean a la stack y se modifican por 0 los nodos ubicados en la posición simétrica en la matriz. Se realiza todo lo anterior hasta que la matriz queda vacía.

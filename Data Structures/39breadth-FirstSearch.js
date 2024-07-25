@@ -15,6 +15,7 @@ function bfs(graph, root) {
       }
     }
   }
+
   let unreacheableValue = Infinity;
   for (let i = 0; i < graph.length; i++) {
     if (nodesLen[i] === undefined) {

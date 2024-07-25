@@ -4,6 +4,9 @@ function dfs(graph, root) {
 
   while (stack.length) {
     const node = stack.pop();
+    if (nodesRemoved.includes(node)) {
+      continue;
+    }
     nodesRemoved.push(node);
     for (let i = 0; i < graph[node].length; i++) {
       if (graph[node][i] === 1) {
@@ -13,15 +16,13 @@ function dfs(graph, root) {
       }
     }
   }
-
   return nodesRemoved;
 }
 
 var exDFSGraph = [
-  [0, 1, 0, 0],
+  [0, 1, 1, 0],
   [1, 0, 1, 0],
-  [0, 1, 0, 1],
-  [0, 0, 1, 0],
+  [1, 1, 0, 0],
+  [0, 0, 0, 0],
 ];
-console.log(dfs(exDFSGraph, 3));
-console.log(exDFSGraph);
+console.log(dfs(exDFSGraph, 1));
