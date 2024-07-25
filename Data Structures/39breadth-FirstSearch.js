@@ -7,7 +7,7 @@ function bfs(graph, root) {
     const node = queue.shift();
 
     for (let i = 0; i < graph[node].length; i++) {
-      if (graph[node][i] === 1) {
+      if (graph[node][i] === 1 && nodesLen[i] === undefined) {
         nodesLen[i] = nodesLen[node] + 1;
         graph[i][node] = 0;
         graph[node][i] = 0;
@@ -27,9 +27,9 @@ function bfs(graph, root) {
 }
 
 var exBFSGraph = [
-  [0, 1, 0, 0],
-  [1, 0, 1, 0],
-  [0, 1, 0, 1],
-  [0, 0, 1, 0],
+  [0, 1, 1, 1],
+  [1, 0, 1, 1],
+  [1, 1, 0, 1],
+  [1, 1, 1, 0],
 ];
-console.log(bfs(exBFSGraph, 0));
+console.log(bfs(exBFSGraph, 3));
