@@ -7,7 +7,7 @@ function bfs(graph, root) {
     const node = queue.shift();
 
     for (let i = 0; i < graph[node].length; i++) {
-      if (graph[node][i] === 1 && nodesLen[i] === undefined) {
+      if (graph[node][i] === 1) {
         nodesLen[i] = nodesLen[node] + 1;
         graph[i][node] = 0;
         graph[node][i] = 0;

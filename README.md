@@ -20,38 +20,41 @@ Repositorio con mis soluciones a los problemas presentes en la página [Coding I
       - [8-Implement Quick Sort](#8-implement-quick-sort)
       - [9-Implement Merge Sort](#9-implement-merge-sort)
       - [10-Implement Binary Search](#10-implement-binary-search)
-  - [Lista de Data Structures](#lista-de-data-structures)
-    - [1-Stack](#1-stack)
-    - [2-Queue](#2-queue)
-    - [3-Priority Queue](#3-priority-queue)
-    - [4-Circular Queue](#4-circular-queue)
-    - [5-Set](#5-set)
-    - [6-Map](#6-map)
-    - [7-Tabla Hash](#7-tabla-hash)
-    - [8- Linked List](#8--linked-list)
-    - [8-Doubly Linked List](#8-doubly-linked-list)
-    - [9-Binary Search Tree](#9-binary-search-tree)
-      - [9.1-Add a new element to a Binary Search Tree](#91-add-a-new-element-to-a-binary-search-tree)
-      - [9.2-Find the Minimum and Maximum Value in a Binary Search Tree](#92-find-the-minimum-and-maximum-value-in-a-binary-search-tree)
-      - [9.3-Check if an Element is Present in a Binary Search Tree](#93-check-if-an-element-is-present-in-a-binary-search-tree)
-      - [9.4-Check if Tree is Binary Search Tree](#94-check-if-tree-is-binary-search-tree)
-      - [9.5-Find the Minimum and Maximum Height of a Binary Search Tree](#95-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
-      - [9.6-Use Depth First Search in a Binary Search Tree](#96-use-depth-first-search-in-a-binary-search-tree)
-      - [9.7-Use Breadth First Search in a Binary Search Tree](#97-use-breadth-first-search-in-a-binary-search-tree)
-      - [9.8-Delete a Leaf Node in a Binary Search Tree](#98-delete-a-leaf-node-in-a-binary-search-tree)
-      - [9.9-Delete a Node with One Child in a Binary Search Tree](#99-delete-a-node-with-one-child-in-a-binary-search-tree)
-      - [9.10-Delete a Node with Two Children in a Binary Search Tree](#910-delete-a-node-with-two-children-in-a-binary-search-tree)
-      - [9.11-Invert a Binary Tree](#911-invert-a-binary-tree)
-    - [10-Create a Trie Search Tree](#10-create-a-trie-search-tree)
-    - [11-Binary Heap](#11-binary-heap)
-      - [11.1-Insert an Element into a Max Heap](#111-insert-an-element-into-a-max-heap)
-      - [11.2-Remove an Element from a Max Heap](#112-remove-an-element-from-a-max-heap)
-      - [11.3-Implement Heap Sort with a Min Heap](#113-implement-heap-sort-with-a-min-heap)
-    - [12-Graphs](#12-graphs)
-      - [12.1-Adjacency List](#121-adjacency-list)
-      - [12.2-Adjacency Matrix](#122-adjacency-matrix)
-      - [12.3-Incidence Matrix](#123-incidence-matrix)
-      - [12.4-Breadth-First Search](#124-breadth-first-search)
+  - [Data Structures](#data-structures)
+    - [100% Completed](#100-completed-1)
+    - [Lista de Data Structures](#lista-de-data-structures)
+      - [1-Stack](#1-stack)
+      - [2-Queue](#2-queue)
+      - [3-Priority Queue](#3-priority-queue)
+      - [4-Circular Queue](#4-circular-queue)
+      - [5-Set](#5-set)
+      - [6-Map](#6-map)
+      - [7-Tabla Hash](#7-tabla-hash)
+      - [8- Linked List](#8--linked-list)
+      - [9-Doubly Linked List](#9-doubly-linked-list)
+      - [10-Binary Search Tree](#10-binary-search-tree)
+        - [10.1-Add a new element to a Binary Search Tree](#101-add-a-new-element-to-a-binary-search-tree)
+        - [10.2-Find the Minimum and Maximum Value in a Binary Search Tree](#102-find-the-minimum-and-maximum-value-in-a-binary-search-tree)
+        - [10.3-Check if an Element is Present in a Binary Search Tree](#103-check-if-an-element-is-present-in-a-binary-search-tree)
+        - [10.4-Check if Tree is Binary Search Tree](#104-check-if-tree-is-binary-search-tree)
+        - [10.5-Find the Minimum and Maximum Height of a Binary Search Tree](#105-find-the-minimum-and-maximum-height-of-a-binary-search-tree)
+        - [10.6-Use Depth First Search in a Binary Search Tree](#106-use-depth-first-search-in-a-binary-search-tree)
+        - [10.7-Use Breadth First Search in a Binary Search Tree](#107-use-breadth-first-search-in-a-binary-search-tree)
+        - [10.8-Delete a Leaf Node in a Binary Search Tree](#108-delete-a-leaf-node-in-a-binary-search-tree)
+        - [10.9-Delete a Node with One Child in a Binary Search Tree](#109-delete-a-node-with-one-child-in-a-binary-search-tree)
+        - [10.10-Delete a Node with Two Children in a Binary Search Tree](#1010-delete-a-node-with-two-children-in-a-binary-search-tree)
+        - [10.11-Invert a Binary Tree](#1011-invert-a-binary-tree)
+      - [11-Create a Trie Search Tree](#11-create-a-trie-search-tree)
+      - [12-Binary Heap](#12-binary-heap)
+        - [12.1-Insert an Element into a Max Heap](#121-insert-an-element-into-a-max-heap)
+        - [12.2-Remove an Element from a Max Heap](#122-remove-an-element-from-a-max-heap)
+        - [12.3-Implement Heap Sort with a Min Heap](#123-implement-heap-sort-with-a-min-heap)
+      - [13-Graphs](#13-graphs)
+        - [13.1-Adjacency List](#131-adjacency-list)
+        - [13.2-Adjacency Matrix](#132-adjacency-matrix)
+        - [13.3-Incidence Matrix](#133-incidence-matrix)
+        - [13.4-Breadth-First Search](#134-breadth-first-search)
+        - [13.5-Depth-First Search](#135-depth-first-search)
 
 ## Algorithms
 
@@ -353,9 +356,15 @@ function binarySearch(searchList, value) {
 }
 ```
 
-## Lista de Data Structures
+## Data Structures
 
-### 1-Stack
+### 100% Completed
+
+![100% completed data structures](./Data%20Structures/completed.webp)
+
+### Lista de Data Structures
+
+#### 1-Stack
 
 ```js
 function Stack() {
@@ -392,7 +401,7 @@ function Stack() {
 }
 ```
 
-### 2-Queue
+#### 2-Queue
 
 ```js
 function Queue() {
@@ -424,7 +433,7 @@ function Queue() {
 }
 ```
 
-### 3-Priority Queue
+#### 3-Priority Queue
 
 ```js
 function PriorityQueue() {
@@ -467,7 +476,7 @@ function PriorityQueue() {
 }
 ```
 
-### 4-Circular Queue
+#### 4-Circular Queue
 
 ```js
 class CircularQueue {
@@ -517,7 +526,7 @@ class CircularQueue {
 }
 ```
 
-### 5-Set
+#### 5-Set
 
 Clase Set con operaciones de agregación, eliminación, unión, intersección, diferencia y chequear si un set es subset de otro:
 
@@ -624,7 +633,7 @@ class Set {
 }
 ```
 
-### 6-Map
+#### 6-Map
 
 ```js
 const Map = function () {
@@ -663,7 +672,7 @@ const Map = function () {
 };
 ```
 
-### 7-Tabla Hash
+#### 7-Tabla Hash
 
 Tabla hash con función de hasheo determinista:
 
@@ -717,7 +726,7 @@ var HashTable = function () {
 };
 ```
 
-### 8- Linked List
+#### 8- Linked List
 
 ```js
 function LinkedList() {
@@ -837,7 +846,7 @@ function LinkedList() {
 }
 ```
 
-### 8-Doubly Linked List
+#### 9-Doubly Linked List
 
 ```js
 var Node = function (data, prev) {
@@ -915,9 +924,9 @@ var DoublyLinkedList = function () {
 };
 ```
 
-### 9-Binary Search Tree
+#### 10-Binary Search Tree
 
-#### 9.1-Add a new element to a Binary Search Tree
+##### 10.1-Add a new element to a Binary Search Tree
 
 ```js
 function Node(value) {
@@ -961,7 +970,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.2-Find the Minimum and Maximum Value in a Binary Search Tree
+##### 10.2-Find the Minimum and Maximum Value in a Binary Search Tree
 
 ```js
 function Node(value) {
@@ -999,7 +1008,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.3-Check if an Element is Present in a Binary Search Tree
+##### 10.3-Check if an Element is Present in a Binary Search Tree
 
 ```js
 function Node(value) {
@@ -1031,7 +1040,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.4-Check if Tree is Binary Search Tree
+##### 10.4-Check if Tree is Binary Search Tree
 
 Creo algoritmo en base a lo señalado en el enunciado:
 
@@ -1088,7 +1097,7 @@ function isBinarySearchTree(tree) {
 }
 ```
 
-#### 9.5-Find the Minimum and Maximum Height of a Binary Search Tree
+##### 10.5-Find the Minimum and Maximum Height of a Binary Search Tree
 
 Además, en base a la altura máxima y la altura mínima se calcula si el árbol esta balanceado o no. Se dice que esta balanceado cuando la diferencia sea a lo más 1:
 
@@ -1135,7 +1144,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.6-Use Depth First Search in a Binary Search Tree
+##### 10.6-Use Depth First Search in a Binary Search Tree
 
 Se crean los 3 métodos siguientes: **inorder**, **preorder** y **postorder** tal que:
 
@@ -1235,7 +1244,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.7-Use Breadth First Search in a Binary Search Tree
+##### 10.7-Use Breadth First Search in a Binary Search Tree
 
 Algoritmo implementado en base a lo señalado en el enunciado:
 
@@ -1284,7 +1293,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.8-Delete a Leaf Node in a Binary Search Tree
+##### 10.8-Delete a Leaf Node in a Binary Search Tree
 
 Implementación de algoritmo que elimina nodos **sin hijos**:
 
@@ -1352,7 +1361,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.9-Delete a Node with One Child in a Binary Search Tree
+##### 10.9-Delete a Node with One Child in a Binary Search Tree
 
 Implementación de algoritmo que elimina nodo con **solo un hijo**:
 
@@ -1426,7 +1435,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.10-Delete a Node with Two Children in a Binary Search Tree
+##### 10.10-Delete a Node with Two Children in a Binary Search Tree
 
 Implementación de algoritmo que elimina un nodo que posee **dos hijos**. La eliminación y la posterior reconfiguración del árbol binario se realiza en base a lo señalado en el enunciado del problema siguiente:
 
@@ -1534,7 +1543,7 @@ function BinarySearchTree() {
 }
 ```
 
-#### 9.11-Invert a Binary Tree
+##### 10.11-Invert a Binary Tree
 
 He creado dos algoritmos diferentes que hacen lo mismo invertir un árbol binario. Un árbol binario invertido se dice que cumple con lo siguiente:
 
@@ -1581,7 +1590,7 @@ function BinarySearchTree() {
 }
 ```
 
-### 10-Create a Trie Search Tree
+#### 11-Create a Trie Search Tree
 
 Se crea un **Trie Search Tree** en base al enunciado del problema:
 
@@ -1657,9 +1666,9 @@ var Trie = function () {
 
 Cuando se agrega una palabra, el nodo asociado a la última letra posee la propiedad **end** igual a true. Para mostrar todas las palabras, se recorren todos los nodos y se van uniendo las letras hasta el nodo asociado a la última letra el cual posee la propiedad end como true. Para chequear si una palabra existe, se procede a recorrer cada nodo y si no existe la clave o si al llegar al nodo que posee la última letra, la propiedad end es false entonces la palabra no existe, en caso contrario si existe.
 
-### 11-Binary Heap
+#### 12-Binary Heap
 
-#### 11.1-Insert an Element into a Max Heap
+##### 12.1-Insert an Element into a Max Heap
 
 Un max heap es lo siguiente:
 
@@ -1730,7 +1739,7 @@ var MaxHeap = function () {
 };
 ```
 
-#### 11.2-Remove an Element from a Max Heap
+##### 12.2-Remove an Element from a Max Heap
 
 Las instrucciones de implementación del algoritmo de eliminación son las siguientes:
 
@@ -1821,7 +1830,7 @@ const MaxHeap = function () {
 };
 ```
 
-#### 11.3-Implement Heap Sort with a Min Heap
+##### 12.3-Implement Heap Sort with a Min Heap
 
 Se implementa un algoritmo heap sort a partir de un min heap. Las instrucciones de cómo crear el algoritmo son las siguientes:
 
@@ -1914,9 +1923,9 @@ var MinHeap = function () {
 };
 ```
 
-### 12-Graphs
+#### 13-Graphs
 
-#### 12.1-Adjacency List
+##### 13.1-Adjacency List
 
 Se define una adjacency list según lo siguiente:
 
@@ -1961,7 +1970,7 @@ var undirectedAdjList = {
 };
 ```
 
-#### 12.2-Adjacency Matrix
+##### 13.2-Adjacency Matrix
 
 Se pide crear lo siguiente:
 
@@ -1977,7 +1986,7 @@ var adjMatUndirected = [
 ];
 ```
 
-#### 12.3-Incidence Matrix
+##### 13.3-Incidence Matrix
 
 Se pide crear lo siguiente:
 
@@ -1995,7 +2004,7 @@ var incMatUndirected = [
 ];
 ```
 
-#### 12.4-Breadth-First Search
+##### 13.4-Breadth-First Search
 
 En base a lo señalado en la explicación del problema:
 
@@ -2031,7 +2040,7 @@ function bfs(graph, root) {
     const node = queue.shift();
 
     for (let i = 0; i < graph[node].length; i++) {
-      if (graph[node][i] === 1 && nodesLen[i] === undefined) {
+      if (graph[node][i] === 1) {
         nodesLen[i] = nodesLen[node] + 1;
         graph[i][node] = 0;
         graph[node][i] = 0;
@@ -2049,3 +2058,50 @@ function bfs(graph, root) {
   return nodesLen;
 }
 ```
+
+##### 13.5-Depth-First Search
+
+En base a la explicación dada previo al ejercicio:
+
+> Similar to breadth-first search, here we will learn about another graph traversal algorithm called depth-first search.
+>
+> Whereas the breadth-first search searches incremental edge lengths away from the source node, depth-first search first goes down a path of edges as far as it can.
+>
+> Once it reaches one end of a path, the search will backtrack to the last node with an un-visited edge path and continue searching.
+>
+> The animation below shows how the algorithm works. The algorithm starts with the top node and visits the nodes in the numbered order.
+>
+> Notice how, unlike breadth-first search, every time a node is visited, it doesn't visit all of its neighbors. Instead, it first visits one of its neighbors and continues down that path until there are no more nodes to be visited on that path.
+>
+> To implement this algorithm, you'll want to use a stack. A stack is an array where the last element added is the first to be removed. This is also known as a Last-In-First-Out data structure. A stack is helpful in depth-first search algorithms because, as we add neighbors to the stack, we want to visit the most recently added neighbors first and remove them from the stack.
+>
+> A simple output of this algorithm is a list of nodes which are reachable from a given node. Therefore, you'll also want to keep track of the nodes you visit.
+
+Se pide realizar lo siguiente:
+
+> Write a function dfs() that takes an undirected, adjacency matrix graph and a node label root as parameters. The node label will just be the numeric value of the node between 0 and n - 1, where n is the total number of nodes in the graph.
+>
+> Your function should output an array of all nodes reachable from root.
+
+```js
+function dfs(graph, root) {
+  const nodesRemoved = [];
+  const stack = [root];
+
+  while (stack.length) {
+    const node = stack.pop();
+    nodesRemoved.push(node);
+    for (let i = 0; i < graph[node].length; i++) {
+      if (graph[node][i] === 1) {
+        graph[i][node] = 0;
+        graph[node][i] = 0;
+        stack.push(i);
+      }
+    }
+  }
+
+  return nodesRemoved;
+}
+```
+
+Mi algoritmo empieza a recorrer desde el nodo root, se almacena su valor en el array **nodesRemoved** y se buscan los nodos conectados al root (valor 1 en la matriz). Se pushea cada valor al array **stack** y se eliminan de la matriz su simétrico ya que aquello implica que ya se considero dicho nodo. En la siguiente iteración del ciclo while, se saca de la stack el último elemento y se agrega su valor al array **nodesRemoved**, se recorren los nodos conectados a dicho nodo (ahora los nodos considerados en iteraciones previas ya no estan en la matriz) y aquellos en que su valor sea 1 se pushean a la stack y se modifican por 0 los nodos ubicados en la posición simétrica en la matriz. Se realiza todo lo anterior hasta que la matriz queda vacía.
